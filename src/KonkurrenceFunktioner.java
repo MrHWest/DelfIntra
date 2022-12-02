@@ -1,3 +1,4 @@
+package src;
 public class KonkurrenceFunktioner {
 
 	public static void indlaesData() {
