@@ -1,3 +1,4 @@
+package src;
 public class FormandFunktioner {
 
 	public static void indlaesData() {

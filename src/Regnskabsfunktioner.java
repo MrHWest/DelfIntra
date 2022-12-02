@@ -1,3 +1,4 @@
+package src;
 public class Regnskabsfunktioner {
 
 	public static void indlaesData() {

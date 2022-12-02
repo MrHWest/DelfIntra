@@ -1,6 +1,9 @@
+package src;
+import java.io.IOException;
+
 public class Delfintra {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO - implement Delfintra.main
 		throw new UnsupportedOperationException();
 	}
