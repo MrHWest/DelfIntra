@@ -1,16 +1,42 @@
 package src;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FileHandler {
 
-	public static String ReadFile() {
-		// TODO - implement FileHandler.ReadFile
-		throw new UnsupportedOperationException();
+	/**
+	 * Reads file and outputs a string for each line read
+	 * @param filePath Path to the file which is to be read. Extension included.
+	 * @return Array of strings, in which each element corresponds to a line in the file
+	 * @throws FileNotFoundException
+	 */
+	public static String[] ReadFile(String filePath) throws FileNotFoundException {
+		File f = new File(filePath);
+
+		Scanner scan = new Scanner(f);
+		scan.useDelimiter("\n");
+
+		ArrayList<String> result = new ArrayList<String>();
+
+		while(scan.hasNext()) {
+			result.add(scan.next());
+		}
+
+		scan.close();
+		return result.toArray(new String[result.size()]);
 	}
 
+	/**
+	 * Writes an array of string to a file. Each element is printed in its own line.
+	 * @param filePath Path to file which is to be modified/added
+	 * @param content The array of strings to write
+	 * @throws IOException
+	 */
 	public static void WriteToFile(String filePath, String[] content) throws IOException {
 		/*
 		Open given file and prepare for writing
