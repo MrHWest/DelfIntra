@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Medlem {
 
@@ -15,12 +16,19 @@ public class Medlem {
 	private String aktivitetsform;
 	private int kontingentId;
 
-	public Medlem(int id, String navn, LocalDate foedselsdato, boolean aktiv, String aktivitetsform) {
+	public Medlem(int id, String navn, LocalDate foedselsdato, boolean aktiv) {
 		this.id = id;
 		this.navn = navn;
 		this.foedselsdato = foedselsdato;
 		this.aktiv = aktiv;
-		this.aktivitetsform = aktivitetsform;
+
+		// Vælg aktivitetsform (junior/senior) udfra aktuel alder
+		if(ChronoUnit.YEARS.between(foedselsdato, LocalDate.now()) < 18) {
+			this.aktivitetsform = "Junior";
+		}
+		else {
+			this.aktivitetsform = "Senior";
+		}
 	}
 
 	public Kontingent hentKontingent() {
@@ -29,14 +37,14 @@ public class Medlem {
 	}
 
 	public static void IndlaesMedlemmer() throws FileNotFoundException {
-		String[] medlemmer = FileHandler.ReadFile("./brugerData/medlemmer.txt");
+		String[] medlemmer = FileHandler.ReadFile("./medlemmer.txt");
 		for(String m : medlemmer) {
 			String[] medlemData = m.split(";");
 			Medlem nyMedlem = new Medlem(
 				Integer.parseInt(medlemData[0]), // id
 				medlemData[1], // navn
 				LocalDate.parse(medlemData[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), // foedselsdato
-				Boolean.parseBoolean(medlemData[3]), medlemData[4]); // aktivitetsform
+				Boolean.parseBoolean(medlemData[3])); // Aktiv
 			
 			MedlemListe.add(nyMedlem);
 		}
@@ -58,7 +66,7 @@ public class Medlem {
 			i++;
 		}
 
-		FileHandler.WriteToFile("./brugerData/medlemmer.txt", medlemArray);
+		FileHandler.WriteToFile("./medlemmer.txt", medlemArray);
 	}
 
 	public boolean compare(Medlem m) {

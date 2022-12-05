@@ -13,8 +13,8 @@ public class MedlemTest {
     @Test
     public void indlaesMedlemmerTest() throws IOException {
         // Generate file with test members
-        Medlem m1 = new Medlem(0, "Test Testesen", LocalDate.of(1997, 11, 17), true, "Senior");
-        Medlem m2 = new Medlem(1, "Lars Larsen", LocalDate.of(1978, 02, 05), true, "Senior");
+        Medlem m1 = new Medlem(0, "Test Testesen", LocalDate.of(1997, 11, 17), true);
+        Medlem m2 = new Medlem(1, "Lars Larsen", LocalDate.of(1978, 02, 05), true);
 
         Medlem.MedlemListe.add(m1);
         Medlem.MedlemListe.add(m2);
@@ -34,8 +34,8 @@ public class MedlemTest {
     @Test
     public void gemMedlemsdataTest() throws IOException {
         Medlem.MedlemListe.clear();
-        Medlem m1 = new Medlem(0, "Test Testesen", LocalDate.of(1997, 11, 17), true, null);
-        Medlem m2 = new Medlem(1, "Lars Larsen", LocalDate.of(1978, 02, 05), true, null);
+        Medlem m1 = new Medlem(0, "Test Testesen", LocalDate.of(1997, 11, 17), true);
+        Medlem m2 = new Medlem(1, "Lars Larsen", LocalDate.of(1978, 02, 05), true);
 
         Medlem.MedlemListe.add(m1);
         Medlem.MedlemListe.add(m2);
@@ -50,6 +50,6 @@ public class MedlemTest {
             content += scan.next();
         }
 
-        assert(content.equals("0;Test Testesen;17/11/1997;true;null1;Lars Larsen;05/02/1978;true;null"));
+        assert(content.equals("0;Test Testesen;17/11/1997;true;Senior1;Lars Larsen;05/02/1978;true;Senior"));
     }
 }
