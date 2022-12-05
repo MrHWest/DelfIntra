@@ -29,7 +29,7 @@ public class Medlem {
 	}
 
 	public static void IndlaesMedlemmer() throws FileNotFoundException {
-		String[] medlemmer = FileHandler.ReadFile("./medlemmer.txt");
+		String[] medlemmer = FileHandler.ReadFile("./brugerData/medlemmer.txt");
 		for(String m : medlemmer) {
 			String[] medlemData = m.split(";");
 			Medlem nyMedlem = new Medlem(
@@ -58,7 +58,7 @@ public class Medlem {
 			i++;
 		}
 
-		FileHandler.WriteToFile("./medlemmer.txt", medlemArray);
+		FileHandler.WriteToFile("./brugerData/medlemmer.txt", medlemArray);
 	}
 
 	public boolean compare(Medlem m) {
