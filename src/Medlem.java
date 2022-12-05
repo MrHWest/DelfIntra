@@ -32,6 +32,10 @@ public class Medlem {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Gemmer medlemmerne i Medlem.MedlemListe til en fil.
+	 * @throws IOException
+	 */
 	public static void gemMedlemsdata() throws IOException {
 		String[] medlemArray = new String[MedlemListe.size()];
 		int i = 0;
