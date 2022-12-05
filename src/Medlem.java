@@ -1,15 +1,22 @@
 package src;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Medlem {
 
 	public static ArrayList<Medlem> MedlemListe;
-	private int Id;
+	private int id;
 	private String navn;
-	private Date foedselsdato;
+	private LocalDate foedselsdato;
 	private String aktivitetsform;
 	private int kontingentId;
+
+	public Medlem(int id, String navn, LocalDate foedselsdato, String aktivitetsform) {
+		this.id = id;
+		this.navn = navn;
+		this.foedselsdato = foedselsdato;
+		this.aktivitetsform = aktivitetsform;
+	}
 
 	public Kontingent hentKontingent() {
 		// TODO - implement Medlem.hentKontingent
