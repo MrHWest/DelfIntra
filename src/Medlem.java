@@ -1,5 +1,6 @@
 package src;
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,9 +28,18 @@ public class Medlem {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void IndlaesMedlemmer() {
-		// TODO - implement Medlem.IndlaesMedlemmer
-		throw new UnsupportedOperationException();
+	public static void IndlaesMedlemmer() throws FileNotFoundException {
+		String[] medlemmer = FileHandler.ReadFile("./medlemmer.txt");
+		for(String m : medlemmer) {
+			String[] medlemData = m.split(";");
+			Medlem nyMedlem = new Medlem(
+				Integer.parseInt(medlemData[0]), // id
+				medlemData[1], // navn
+				LocalDate.parse(medlemData[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), // foedselsdato
+				Boolean.parseBoolean(medlemData[3]), medlemData[4]); // aktivitetsform
+			
+			MedlemListe.add(nyMedlem);
+		}
 	}
 
 	/**
@@ -49,6 +59,17 @@ public class Medlem {
 		}
 
 		FileHandler.WriteToFile("./medlemmer.txt", medlemArray);
+	}
+
+	public boolean compare(Medlem m) {
+		if(this.id != m.id) return false;
+		if(!this.navn.equals(m.navn)) return false;
+		if(!this.foedselsdato.equals(m.foedselsdato)) return false;
+		if(this.aktiv != m.aktiv) return false;
+		if(!this.aktivitetsform.equals(m.aktivitetsform)) return false;
+
+		// Begge medlemmers attributter er lige med hinanden hvis vi når hertil
+		return true;
 	}
 
 }
