@@ -13,18 +13,18 @@ public class Delfintra {
         Scanner input = new Scanner(System.in);
 
         System.out.println("-----Hvad vil du?-----");
-        System.out.println("1 - Registrer medlem \n2 - Registrer Indbetalling");
-        System.out.println("3 - Liste over medlemmer i restance \n4 - Registrer konkurrence svoemmere's (Stævne/placering/tid)");
-        System.out.println("5 - Registrer træningsresultater \n6 - Se top 5 svømmere for hver disciplin");
+        System.out.println("1 - Registrer medlem");
+        System.out.println("2 - Registrer Indbetalling");
+        System.out.println("3 - Liste over medlemmer i restance");
+        System.out.println("4 - Registrer konkurrence svoemmere's (Stævne/placering/tid)");
+        System.out.println("5 - Registrer træningsresultater");
+        System.out.println("6 - Se top 5 svømmere for hver disciplin");
 
         int tastTal;
-        
-
         ArrayList<Integer> valid_answers = new ArrayList<>();
         for (int i=1; i<=6; i++) {
             valid_answers.add(i);
         }
-
         do {
             tastTal = input.nextInt();
             
@@ -36,6 +36,7 @@ public class Delfintra {
                 //Registrer medlem
                 case 1:
                 System.out.println("Du har valgt at registrer et medlem");
+                FormandFunktioner.registrerMedlem();
 
                 break;
 
