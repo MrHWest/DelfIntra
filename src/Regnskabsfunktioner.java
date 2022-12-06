@@ -22,7 +22,7 @@ public class Regnskabsfunktioner {
 		for (Medlem m: MedlemListe)
 		{
 			kontingent = m.hentKontingent();
-			if (ChronoUnit.YEARS.between(kontingent.getBetalingsDato()), LocalDate.now() > 1)
+			if (ChronoUnit.YEARS.between(kontingent.getBetalingsDato(), LocalDate.now()) > 1)
 			{
 				debitorListe.add(m);
 			}
