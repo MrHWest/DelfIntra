@@ -35,6 +35,9 @@ public class Kontingent {
 		return betalingsdato;
 	}
 
+	public void setBetalingsdato(LocalDate betalingsdato) {
+		this.betalingsdato = betalingsdato;
+	}
 
 	Date hentBetalingsdato() {
 		// TODO - implement Kontingent.hentBetalingsdato
