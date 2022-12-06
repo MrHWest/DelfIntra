@@ -17,7 +17,7 @@ public class Kontingent {
 
 	}
 
-
+//metode der beregner pris baseret på medlems alder og aktiv/passiv-status:
 	public double hentPris(LocalDate foedselsdag, boolean aktiv)
 	{
 		//hvis medlem er passiv kan resten af beregning springes over
