@@ -12,6 +12,14 @@ public class Delfintra {
 	public static void visValgmuligheder() {
         Scanner input = new Scanner(System.in);
 
+        int tastTal;
+        /*ArrayList<Integer> valid_answers = new ArrayList<>();
+        
+        for (int i=1; i<=6; i++) {
+            valid_answers.add(i);
+        }*/
+        do {
+
         System.out.println("-----Hvad vil du?-----");
         System.out.println("1 - Registrer medlem");
         System.out.println("2 - Registrer Indbetalling");
@@ -19,16 +27,11 @@ public class Delfintra {
         System.out.println("4 - Registrer konkurrence svoemmere's (Stævne/placering/tid)");
         System.out.println("5 - Registrer træningsresultater");
         System.out.println("6 - Se top 5 svømmere for hver disciplin");
+        System.out.println("Tryk 0 for at lukke programmet");
 
-        int tastTal;
-        ArrayList<Integer> valid_answers = new ArrayList<>();
-        for (int i=1; i<=6; i++) {
-            valid_answers.add(i);
-        }
-        do {
             tastTal = input.nextInt();
             
-            if(tastTal > 7 || tastTal < 1){
+            if(tastTal > 7 || tastTal < 0){
                 System.out.println("Venligst indtast et gyldigt tal");
             }
 
@@ -38,6 +41,7 @@ public class Delfintra {
                 System.out.println("Du har valgt at registrer et medlem");
                 FormandFunktioner.registrerMedlem();
 
+                visValgmuligheder();
                 break;
 
                 //Registrer indbetalling
@@ -71,7 +75,7 @@ public class Delfintra {
                 break;
             } //Slut paa switch
 
-        } while (!valid_answers.contains(tastTal));
+        } while (tastTal != 0);
 	}
 
 }
