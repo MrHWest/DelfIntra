@@ -80,4 +80,8 @@ public class Medlem {
 		return true;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 }
