@@ -1,6 +1,8 @@
 package src;
 public class Regnskabsfunktioner {
 
+	Scanner scan = new Scanner(System.in);
+
 	public static void indlaesData() {
 		// TODO - implement Regnskabsfunktioner.indlaesData
 		throw new UnsupportedOperationException();
@@ -11,9 +13,17 @@ public class Regnskabsfunktioner {
 		throw new UnsupportedOperationException();
 	}
 
+	//Finder et medlem, finder dette medlems kontingent og opdaterer seneste betalingsdato til dags dato
 	public static void registrerIndbetaling() {
-		// TODO - implement Regnskabsfunktioner.registrerIndbetaling
-		throw new UnsupportedOperationException();
+		System.out.println("Indtast navn på det medlem du vil registrere en indbetaling for:");
+		String navn = scan.nextLine();
+		for (Medlem m: MedlemListe)
+		{
+			if (navn.equals(m.getNavn()))
+			{
+				m.hentKontingent().setKontingent(LocalDate.now());
+			}
+		}
 	}
 
 	public static void visRestancer() {
