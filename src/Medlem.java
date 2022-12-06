@@ -80,7 +80,10 @@ public class Medlem {
 		return true;
 	}
 
-	public String toString(){
+public String toString(){
 		return navn +" "+ foedselsdato +" "+ aktiv;
 	}
-}
+
+ public int getId() {
+		return id;
+	}
