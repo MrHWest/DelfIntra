@@ -32,8 +32,12 @@ public class Medlem {
 	}
 
 	public Kontingent hentKontingent() {
-		// TODO - implement Medlem.hentKontingent
-		throw new UnsupportedOperationException();
+		int i = 0;
+		for (Kontingent k: kontingentListe)
+		{
+			if (this.id == k.id) return k;
+			i++;
+		}
 	}
 
 	public static void IndlaesMedlemmer() throws FileNotFoundException {

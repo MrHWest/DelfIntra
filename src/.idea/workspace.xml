@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ca885be-1e83-4984-b242-a59e2a9ea88c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Kontingent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Kontingent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Medlem.java" afterDir="false" />
-    </list>
+    <list default="true" id="5ca885be-1e83-4984-b242-a59e2a9ea88c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,8 +31,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-18",
     "last_opened_file_path": "C:/Users/Jakob/Documents/GitHub/DelfIntra/src",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -48,5 +46,16 @@
       <updated>1670105996816</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

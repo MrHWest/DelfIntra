@@ -17,8 +17,21 @@ public class Regnskabsfunktioner {
 	}
 
 	public static void visRestancer() {
-		// TODO - implement Regnskabsfunktioner.visRestancer
-		throw new UnsupportedOperationException();
+		ArrayList<Medlem> debitorListe = new ArrayList<Medlem>();
+
+		for (Medlem m: MedlemListe)
+		{
+			kontingent = m.hentKontingent();
+			if (ChronoUnit.YEARS.between(kontingent.getBetalingsDato(), LocalDate.now()) > 1)
+			{
+				debitorListe.add(m);
+			}
+		}
+
+		for (Medlem m: debitorListe)
+		{
+			System.out.println(m);
+		}
 	}
 
 }
