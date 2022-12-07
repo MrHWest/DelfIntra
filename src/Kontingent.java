@@ -1,12 +1,14 @@
 package src;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Kontingent {
 
-	public static ArrayList<Kontingent> kontingentListe;
+	public static ArrayList<Kontingent> kontingentListe = new ArrayList<Kontingent>();
 	private int Id;
 	private double pris;
 	private LocalDate betalingsdato;
@@ -15,7 +17,7 @@ public class Kontingent {
 	{
 		this.Id = medlem.getId();
 		this.betalingsdato = LocalDate.now();
-		this.pris = hentPris(medlem.foedselsdato, medlem.aktiv);
+		this.pris = hentPris(medlem.hentFoedselsdato(), medlem.hentAktivStatus());
 
 	}
 
@@ -51,9 +53,19 @@ public class Kontingent {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void gemKontingentData() {
-		// TODO - implement Kontingent.gemKontingentData
-		throw new UnsupportedOperationException();
+	public static void gemKontingentData() throws IOException {
+		String[] kontingentData = new String[Kontingent.kontingentListe.size()];
+
+		int i = 0;
+		for(Kontingent k : Kontingent.kontingentListe) {
+			kontingentData[i] = k.Id + ";"
+			+ k.pris + ";"
+			+ k.betalingsdato.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+			i++;
+		}
+
+		FileHandler.WriteToFile("kontingenter.txt", kontingentData);
 	}
 
 }
