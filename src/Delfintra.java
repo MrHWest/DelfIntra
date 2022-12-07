@@ -1,7 +1,7 @@
 package src;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Delfintra {
 
@@ -13,11 +13,6 @@ public class Delfintra {
         Scanner input = new Scanner(System.in);
 
         int tastTal;
-        /*ArrayList<Integer> valid_answers = new ArrayList<>();
-        
-        for (int i=1; i<=6; i++) {
-            valid_answers.add(i);
-        }*/
         do {
 
         System.out.println("-----Hvad vil du?-----");
@@ -74,8 +69,8 @@ public class Delfintra {
 
                 break;
             } //Slut paa switch
-
+          
         } while (tastTal != 0);
-	}
+	} 
 
 }
