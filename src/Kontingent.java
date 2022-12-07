@@ -1,4 +1,5 @@
 package src;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,6 +22,12 @@ public class Kontingent {
 		kontingentListe.add(this);
 	}
 
+	// Needed for indlaesKontingenter()
+	private Kontingent(int id, double pris, LocalDate betalingsdato) {
+		this.id = id;
+		this.pris = pris;
+		this.betalingsdato = betalingsdato;
+	}
 //metode der beregner pris baseret på medlems alder og aktiv/passiv-status:
 	public double hentPris(LocalDate foedselsdato, boolean aktiv)
 	{
@@ -48,9 +55,15 @@ public class Kontingent {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void indlaesKontingenter() {
-		// TODO - implement Kontingent.indlaesKontingenter
-		throw new UnsupportedOperationException();
+	public static void indlaesKontingenter() throws FileNotFoundException {
+		String[] contentsRead = FileHandler.ReadFile("./kontingenter.txt");
+		for(String s : contentsRead) {
+			String[] kontingentData = s.split(";");
+			Kontingent.kontingentListe.add(new Kontingent(
+				Integer.parseInt(kontingentData[0]),
+				Double.parseDouble(kontingentData[1]),
+				LocalDate.parse(kontingentData[2], DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+		}
 	}
 
 	public static void gemKontingentData() throws IOException {
@@ -70,5 +83,14 @@ public class Kontingent {
 
 	public int getId() {
 		return id;
+	}
+
+	public boolean compare(Kontingent k) {
+		if (this.id != k.id) return false;
+		if (this.pris != k.pris) return false;
+		if (!this.betalingsdato.equals(k.betalingsdato)) return false;
+
+		// Objects are equal if we get to this point
+		return true;
 	}
 }
