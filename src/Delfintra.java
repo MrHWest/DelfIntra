@@ -47,13 +47,13 @@ public class Delfintra {
                 //Registrer indbetalling
                 case 2:
                 System.out.println("Du har valgt at Registrer Indbetallinger");
-
+                Regnskabsfunktioner.registrerIndbetaling();
                 break;
 
                 //Liste af medlemmer i restance
                 case 3:
                 System.out.println("Du har valgt at se en liste over medlemmer i restance");
-
+                Regnskabsfunktioner.visRestancer();
                 break;
 
                 //Konkurrence svoemmere's resultater

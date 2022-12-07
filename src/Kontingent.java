@@ -1,4 +1,6 @@
 package src;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,25 +15,25 @@ public class Kontingent {
 	{
 		this.Id = medlem.getId();
 		this.betalingsdato = LocalDate.now();
-		this.pris = hentPris(medlem.foedseldag, medlem.aktiv);
+		this.pris = hentPris(medlem.foedselsdato, medlem.aktiv);
 
 	}
 
 //metode der beregner pris baseret på medlems alder og aktiv/passiv-status:
-	public double hentPris(LocalDate foedselsdag, boolean aktiv)
+	public double hentPris(LocalDate foedselsdato, boolean aktiv)
 	{
 		//hvis medlem er passiv kan resten af beregning springes over
 		double pris = 500;
 		if (!aktiv) return pris;
 		//ellers beregnes alder og derefter pris. Pensionistrabat som modifikation af senior-pris
-		alder = ChronoUnit.YEARS.between(foedselsdato, LocalDate.now());
+		double alder = ChronoUnit.YEARS.between(foedselsdato, LocalDate.now());
 		if (aktiv && alder < 18) pris = 1000;
 		if (aktiv && alder >= 18) pris = 1600;
 		if (aktiv && alder >= 65) pris = 75/100*pris;
 		return pris;
 	}
 
-	public LocalDate getBetalingsdato() {
+	public LocalDate getBetalingsDato() {
 		return betalingsdato;
 	}
 
