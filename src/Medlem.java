@@ -96,4 +96,12 @@ public String toString(){
 	{
 		return navn;
 	}
+
+public LocalDate hentFoedselsdato() {
+	return this.foedselsdato;
+}
+
+	public boolean hentAktivStatus() {
+		return this.aktiv;
+	}
 }
