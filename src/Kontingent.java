@@ -58,7 +58,7 @@ public class Kontingent {
 
 		int i = 0;
 		for(Kontingent k : Kontingent.kontingentListe) {
-			kontingentData[i] = k.Id + ";"
+			kontingentData[i] = k.id + ";"
 			+ k.pris + ";"
 			+ k.betalingsdato.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
