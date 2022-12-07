@@ -1,5 +1,6 @@
 package src;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -7,11 +8,11 @@ import java.util.Scanner;
 
 public class Regnskabsfunktioner {
 
-	Scanner scan = new Scanner(System.in);
+	static Scanner scan = new Scanner(System.in);
 
-	public static void indlaesData() {
-		// TODO - implement Regnskabsfunktioner.indlaesData
-		throw new UnsupportedOperationException();
+	public static void indlaesData() throws FileNotFoundException {
+		Medlem.IndlaesMedlemmer();
+		Kontingent.indlaesKontingenter();
 	}
 
 	public static void visValgmuligheder() {
@@ -27,7 +28,7 @@ public class Regnskabsfunktioner {
 		{
 			if (navn.equals(m.getNavn()))
 			{
-				m.hentKontingent().setKontingent(LocalDate.now());
+				m.hentKontingent().setBetalingsdato(LocalDate.now());
 			}
 		}
 	}

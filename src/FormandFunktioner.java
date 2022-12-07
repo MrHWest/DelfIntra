@@ -61,6 +61,8 @@ public class FormandFunktioner {
 			if(korrekt.toLowerCase().equals("ja")){
 				Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
 				Medlem.MedlemListe.add(nyMedlem);
+				Kontingent nytKontingent = new Kontingent(nyMedlem);
+				Kontingent.kontingentListe.add(nytKontingent);
 				System.out.println("-----Oplyningerne er gemt-----");
 				nytMedlem = true;
 			}else if(korrekt.toLowerCase().equals("nej")){
@@ -68,6 +70,7 @@ public class FormandFunktioner {
 			}
 		} while (nytMedlem == false);
 		input.close();
+
 	}
 
 }

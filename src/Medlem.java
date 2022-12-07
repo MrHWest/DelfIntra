@@ -33,9 +33,9 @@ public class Medlem {
 
 	public Kontingent hentKontingent() {
 		int i = 0;
-		for (Kontingent k: kontingentListe)
+		for (Kontingent k: Kontingent.kontingentListe)
 		{
-			if (this.id == k.id) return k;
+			if (this.id == k.getId()) return k;
 			i++;
 		}
 	}
@@ -96,4 +96,15 @@ public String toString(){
 	{
 		return navn;
 	}
+
+	public boolean getAktiv() {
+		return aktiv;
+	}
+
+	public LocalDate getFoedselsdato() {
+		return foedselsdato;
+	}
 }
+
+
+
