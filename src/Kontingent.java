@@ -7,16 +7,16 @@ import java.util.Date;
 public class Kontingent {
 
 	public static ArrayList<Kontingent> kontingentListe;
-	private int Id;
+	private int id;
 	private double pris;
 	private LocalDate betalingsdato;
 
 	public Kontingent(Medlem medlem)
 	{
-		this.Id = medlem.getId();
+		this.id = medlem.getId();
 		this.betalingsdato = LocalDate.now();
-		this.pris = hentPris(medlem.foedselsdato, medlem.aktiv);
-
+		this.pris = hentPris(medlem.getFoedselsdato(), medlem.getAktiv());
+		kontingentListe.add(this);
 	}
 
 //metode der beregner pris baseret på medlems alder og aktiv/passiv-status:
@@ -56,4 +56,7 @@ public class Kontingent {
 		throw new UnsupportedOperationException();
 	}
 
+	public int getId() {
+		return id;
+	}
 }

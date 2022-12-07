@@ -1,4 +1,5 @@
 package src;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class Delfintra {
 		visValgmuligheder();
 	}
 
-	public static void visValgmuligheder() {
+	public static void visValgmuligheder() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
 
         int tastTal;
@@ -47,6 +48,7 @@ public class Delfintra {
                 //Registrer indbetalling
                 case 2:
                 System.out.println("Du har valgt at Registrer Indbetallinger");
+                Regnskabsfunktioner.indlaesData();
                 Regnskabsfunktioner.registrerIndbetaling();
                 break;
 
