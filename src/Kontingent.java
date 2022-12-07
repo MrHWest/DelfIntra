@@ -9,16 +9,16 @@ import java.util.Date;
 public class Kontingent {
 
 	public static ArrayList<Kontingent> kontingentListe = new ArrayList<Kontingent>();
-	private int Id;
+	private int id;
 	private double pris;
 	private LocalDate betalingsdato;
 
 	public Kontingent(Medlem medlem)
 	{
-		this.Id = medlem.getId();
+		this.id = medlem.getId();
 		this.betalingsdato = LocalDate.now();
-		this.pris = hentPris(medlem.hentFoedselsdato(), medlem.hentAktivStatus());
-
+		this.pris = hentPris(medlem.getFoedselsdato(), medlem.getAktiv());
+		kontingentListe.add(this);
 	}
 
 //metode der beregner pris baseret på medlems alder og aktiv/passiv-status:
@@ -68,4 +68,7 @@ public class Kontingent {
 		FileHandler.WriteToFile("kontingenter.txt", kontingentData);
 	}
 
+	public int getId() {
+		return id;
+	}
 }

@@ -31,13 +31,18 @@ public class Medlem {
 		}
 	}
 
-	public Kontingent hentKontingent() {
-		int i = 0;
-		for (Kontingent k: kontingentListe)
+	public Kontingent hentKontingent()
+	{
+		Kontingent kont = null;
+		for (Kontingent k: Kontingent.kontingentListe)
 		{
-			if (this.id == k.id) return k;
-			i++;
+			if (this.id == k.getId())
+			{
+				kont = k;
+				break;
+			}
 		}
+		return kont;
 	}
 
 	public static void IndlaesMedlemmer() throws FileNotFoundException {
@@ -97,11 +102,11 @@ public String toString(){
 		return navn;
 	}
 
-public LocalDate hentFoedselsdato() {
-	return this.foedselsdato;
-}
+	public boolean getAktiv() {
+		return aktiv;
+	}
 
-	public boolean hentAktivStatus() {
-		return this.aktiv;
+	public LocalDate getFoedselsdato() {
+		return foedselsdato;
 	}
 }
