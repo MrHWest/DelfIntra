@@ -23,10 +23,6 @@ public class KontingentTest {
         Kontingent k1 = new Kontingent(m1);
         Kontingent k2 = new Kontingent(m2);
 
-        // Add dummy kontingenter to kontingentListe
-        Kontingent.kontingentListe.add(k1);
-        Kontingent.kontingentListe.add(k2);
-
         // Write dummy kontingenter to file
         Kontingent.gemKontingentData();
 
@@ -52,10 +48,6 @@ public class KontingentTest {
         Kontingent k1 = new Kontingent(m1);
         Kontingent k2 = new Kontingent(m2);
 
-        // Add dummy kontingenter to kontingentListe
-        Kontingent.kontingentListe.add(k1);
-        Kontingent.kontingentListe.add(k2);
-
         // Write dummy kontingenter to file
         Kontingent.gemKontingentData();
 
@@ -67,7 +59,7 @@ public class KontingentTest {
 
         // Assertions
         assert(Kontingent.kontingentListe.size() == 2);
-        assert(Kontingent.kontingentListe.get(0).equals(k1));
-        assert(Kontingent.kontingentListe.get(1).equals(k2));
+        assert(Kontingent.kontingentListe.get(0).compare(k1));
+        assert(Kontingent.kontingentListe.get(1).compare(k2));
     }
 }
