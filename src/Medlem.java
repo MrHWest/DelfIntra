@@ -110,6 +110,3 @@ public String toString(){
 		return foedselsdato;
 	}
 }
-
-
-
