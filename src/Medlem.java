@@ -31,13 +31,18 @@ public class Medlem {
 		}
 	}
 
-	public Kontingent hentKontingent() {
-		int i = 0;
+	public Kontingent hentKontingent()
+	{
+		Kontingent kont = null;
 		for (Kontingent k: Kontingent.kontingentListe)
 		{
-			if (this.id == k.getId()) return k;
-			i++;
+			if (this.id == k.getId())
+			{
+				kont = k;
+				break;
+			}
 		}
+		return kont;
 	}
 
 	public static void IndlaesMedlemmer() throws FileNotFoundException {
