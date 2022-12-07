@@ -41,30 +41,54 @@ public class FormandFunktioner {
 				System.out.println("!Ugyldigt svar!");
 			}
 
-			//konkurence svømmer
+			
 			System.out.println("Er det en konkurence svoemmer? (Ja/Nej)");
-			String aktivitetsform = "";
+			String diciplin = "";
 			String ja_nej = input.nextLine();
+
 			if(ja_nej.toLowerCase().equals("ja")){
+				//opretter en konkurrencesvoemmer
+
 				System.out.println("Indtast diciplin");
-				aktivitetsform = input.nextLine();
-			} else if(ja_nej.toLowerCase().equals("nej")){
-				aktivitetsform = "ikke deltagene";
+				diciplin = input.nextLine();
+
+				System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
+				System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + diciplin /*+ " | aktivitetsform: " + aktivitetsform */);
+				System.out.println("____________________________________________________________________________");
+				String korrekt = input.nextLine();
+
+					if(korrekt.toLowerCase().equals("ja")){
+						// Konkurrencesvoemmer nyMedlem = new Medlem(Konkurrencesvoemmer.MedlemListe.size()+1, navn, foedselsdato, aktiv, diciplin, aktivitetsform);
+						// Konkurrencesvoemmer.MedlemListe.add(nyMedlem);
+						System.out.println("-----Oplyningerne er gemt-----");
+						nytMedlem = true;
+					}else if(korrekt.toLowerCase().equals("nej")){
+						System.out.println("Indtast oplysnigerne igen");
+						break;
+					}
+
+				} else if(ja_nej.toLowerCase().equals("nej")){
+					diciplin = "ikke deltagene";
+
+				//opretter et nyt medlem
+				System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
+				System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + diciplin /*+ " | aktivitetsform: " + aktivitetsform */);
+				System.out.println("____________________________________________________________________________");
+				String korrekt = input.nextLine();
+
+				
+				if(korrekt.toLowerCase().equals("ja")){
+					//gemmer oplysninger til <ArrayList>
+					Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv/*, aktivitetsform */);
+					Medlem.MedlemListe.add(nyMedlem);
+					System.out.println("-----Oplyningerne er gemt-----");
+					nytMedlem = true;
+
+				}else if(korrekt.toLowerCase().equals("nej")){
+					System.out.println("Indtast oplysnigerne igen");
+				}
 			}
 			
-
-			System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
-			System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
-			System.out.println("____________________________________________________________________________");
-			String korrekt = input.nextLine();
-			if(korrekt.toLowerCase().equals("ja")){
-				Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
-				Medlem.MedlemListe.add(nyMedlem);
-				System.out.println("-----Oplyningerne er gemt-----");
-				nytMedlem = true;
-			}else if(korrekt.toLowerCase().equals("nej")){
-				System.out.println("Indtast oplysnigerne igen");
-			}
 		} while (nytMedlem == false);
 		
 	}

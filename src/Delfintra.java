@@ -36,37 +36,42 @@ public class Delfintra {
                 System.out.println("Du har valgt at registrer et medlem");
                 FormandFunktioner.registrerMedlem();
 
-                visValgmuligheder();
+                
                 break;
 
                 //Registrer indbetalling
                 case 2:
                 System.out.println("Du har valgt at Registrer Indbetallinger");
 
+                
                 break;
 
                 //Liste af medlemmer i restance
                 case 3:
                 System.out.println("Du har valgt at se en liste over medlemmer i restance");
 
+                
                 break;
 
                 //Konkurrence svoemmere's resultater
                 case 4:
                 System.out.println("Du har valgt at Registrer konkurrence svoemmere's resultater (Stævne/placering/tid)");
 
+                
                 break;
 
                 //Registrer træningsresultater
                 case 5:
                 System.out.println("Du har valgt at Registrer træningsresultater");
 
+               
                 break;
 
                 //Se top 5 liste 
                 case 6:
                 System.out.println("Du har valgt at se en top 5 liste");
 
+                
                 break;
             } //Slut paa switch
           
