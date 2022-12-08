@@ -74,6 +74,9 @@ public class Delfintra {
                 System.out.println("Du har valgt at se en top 5 liste");
 
                 break;
+
+                case 7:
+                System.out.println("Du har valgt at se medlemslisten");
             } //Slut paa switch
 
         } while (tastTal != 0);

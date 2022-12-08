@@ -98,6 +98,12 @@ public String toString(){
 		return navn +" "+ foedselsdato +" "+ aktiv;
 	}
 
+public void printMedlemListe() {
+	for(Medlem m : MedlemListe) {
+		System.out.println(m.toString());
+	}
+}
+
  public int getId() {
 		return id;
 	}
