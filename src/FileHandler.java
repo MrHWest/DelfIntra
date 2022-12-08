@@ -18,6 +18,12 @@ public class FileHandler {
 	public static String[] ReadFile(String filePath) throws FileNotFoundException {
 		File f = new File(filePath);
 
+		// If file doesn't exist, return empty array
+		if(!f.exists()) {
+			return new String[0];
+		}
+
+		// File exists. Time to read it
 		Scanner scan = new Scanner(f);
 		scan.useDelimiter("\n");
 
