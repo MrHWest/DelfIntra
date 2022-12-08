@@ -2,6 +2,7 @@ package src;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Delfintra {
@@ -13,7 +14,7 @@ public class Delfintra {
 	public static void visValgmuligheder() throws Exception {
         Scanner input = new Scanner(System.in);
 
-        int tastTal;
+        int tastTal = -1;
         /*ArrayList<Integer> valid_answers = new ArrayList<>();
         
         for (int i=1; i<=6; i++) {
@@ -21,6 +22,8 @@ public class Delfintra {
         }*/
         do {
 
+        try {
+        System.out.println();
         System.out.println("-----Hvad vil du?-----");
         System.out.println("1 - Registrer medlem");
         System.out.println("2 - Registrer Indbetalling");
@@ -81,7 +84,10 @@ public class Delfintra {
                 Medlem.printMedlemListe();
                 break;
             } //Slut paa switch
-
+        } catch(InputMismatchException e) {
+            System.out.println("Du har indtastet forkert slags input. Prøv igen.");
+            input.next();
+        }
         } while (tastTal != 0);
         System.out.println("Programmet lukker nu");
 	}
