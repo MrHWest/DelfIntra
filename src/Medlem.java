@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -145,10 +146,21 @@ public static void printMedlemListe() throws FileNotFoundException {
 		{
 			System.out.println("Indtast navn på medlemmet:");
 			String n = scan.nextLine();
-			System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
-			String input_dato = scan.nextLine();
+			String input_dato = "";
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-			LocalDate f = LocalDate.parse(input_dato, formatter);
+			LocalDate f = LocalDate.of(1900, 12, 12);
+			boolean validInput = true;
+			do {
+				System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
+				input_dato = scan.nextLine();
+				try {
+					f = LocalDate.parse(input_dato, formatter);
+					validInput = true;
+				} catch(DateTimeParseException e) {
+					System.out.println("Ugyldig dato! Prøv at indtaste igen");
+					validInput = false;
+				}
+			} while(!validInput);
 			fundetId = findId(n,f);
 			if (fundetId >= 0) {
 				idOk = true;
