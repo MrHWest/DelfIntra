@@ -1,5 +1,6 @@
 package src;
 import java.util.Scanner;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -10,7 +11,7 @@ public class FormandFunktioner {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void registrerMedlem() {
+	public static void registrerMedlem() throws IOException {
 
 		/*indlaes medlemmer*/
 		boolean nytMedlem = false;
@@ -63,6 +64,11 @@ public class FormandFunktioner {
 				Medlem.MedlemListe.add(nyMedlem);
 				Kontingent nytKontingent = new Kontingent(nyMedlem);
 				Kontingent.kontingentListe.add(nytKontingent);
+
+				// Gem oplysninger til fil
+				Medlem.gemMedlemsdata();
+				Kontingent.gemKontingentData();
+
 				System.out.println("-----Oplyningerne er gemt-----");
 				nytMedlem = true;
 			}else if(korrekt.toLowerCase().equals("nej")){
