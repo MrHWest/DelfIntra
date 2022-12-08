@@ -23,7 +23,7 @@ public class FormandFunktioner {
 			String navn = input.nextLine();
 
 			//Indlaes dato og cast til LocalDate
-			System.out.println("Indast foedselsdato (dd-mm-yyyy)");
+			System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
 			String input_dato = input.nextLine();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			LocalDate foedselsdato = LocalDate.parse(input_dato, formatter);
