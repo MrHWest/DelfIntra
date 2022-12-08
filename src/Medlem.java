@@ -95,8 +95,18 @@ public class Medlem {
 	}
 
 public String toString(){
-		return navn +" "+ foedselsdato +" "+ aktiv;
+	return "ID: " + this.id +
+		" | Navn: " + this.navn +
+		" | Fødselsdag: " + foedselsdato +
+		" | Aktiv: " + (this.aktiv ? "Ja" : "Nej");
 	}
+
+public static void printMedlemListe() throws FileNotFoundException {
+	IndlaesMedlemmer();
+	for(Medlem m : MedlemListe) {
+		System.out.println(m.toString());
+	}
+}
 
  public int getId() {
 		return id;

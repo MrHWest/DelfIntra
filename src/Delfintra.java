@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class Delfintra {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		visValgmuligheder();
 	}
 
-	public static void visValgmuligheder() throws FileNotFoundException {
+	public static void visValgmuligheder() throws Exception {
         Scanner input = new Scanner(System.in);
 
         int tastTal;
@@ -28,6 +28,7 @@ public class Delfintra {
         System.out.println("4 - Registrer konkurrencessvoemmere's resultater (Stævne/placering/tid)");
         System.out.println("5 - Registrer traeningsresultater");
         System.out.println("6 - Se top 5 svoemmere for hver disciplin");
+        System.out.println("7 - Print medlem liste");
         System.out.println("Tryk 0 for at lukke programmet");
 
             tastTal = input.nextInt();
@@ -60,7 +61,7 @@ public class Delfintra {
                 //Konkurrence svoemmere's resultater
                 case 4:
                 System.out.println("Du har valgt at Registrer konkurrencessvoemmere's resultater (Stævne/placering/tid)");
-
+                KonkurrenceFunktioner.registrerTraening();
                 break;
 
                 //Registrer træningsresultater
@@ -73,6 +74,11 @@ public class Delfintra {
                 case 6:
                 System.out.println("Du har valgt at se en top 5 liste");
 
+                break;
+
+                case 7:
+                System.out.println("Du har valgt at se medlemslisten");
+                Medlem.printMedlemListe();
                 break;
             } //Slut paa switch
 
