@@ -36,9 +36,9 @@ public class Kontingent {
 		if (!aktiv) return pris;
 		//ellers beregnes alder og derefter pris. Pensionistrabat som modifikation af senior-pris
 		double alder = ChronoUnit.YEARS.between(foedselsdato, LocalDate.now());
-		if (aktiv && alder < 18) pris = 1000;
-		if (aktiv && alder >= 18) pris = 1600;
-		if (aktiv && alder >= 65) pris = 75/100*pris;
+		if (alder < 18) pris = 1000;
+		if (alder >= 18) pris = 1600;
+		if (alder >= 65) pris = 75/100*pris;
 		return pris;
 	}
 
@@ -92,5 +92,9 @@ public class Kontingent {
 
 		// Objects are equal if we get to this point
 		return true;
+	}
+
+	public double getPris() {
+		return pris;
 	}
 }

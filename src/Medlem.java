@@ -1,10 +1,12 @@
 package src;
-import java.util.ArrayList;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Medlem {
 
@@ -15,6 +17,8 @@ public class Medlem {
 	private boolean aktiv;
 	private String aktivitetsform;
 	private int kontingentId;
+
+	Scanner scan = new Scanner(System.in);
 
 	public Medlem(int id, String navn, LocalDate foedselsdato, boolean aktiv) {
 		this.id = id;
@@ -108,5 +112,15 @@ public String toString(){
 
 	public LocalDate getFoedselsdato() {
 		return foedselsdato;
+	}
+
+	//metode til at finde et medlemsid baseret på navn og foedselsdato
+	public static int findId(String navn, LocalDate foedselsdato)
+	{
+		for (Medlem m: MedlemListe)
+		{
+
+		}
+
 	}
 }

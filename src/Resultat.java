@@ -1,13 +1,21 @@
 package src;
-import java.time.LocalTime;
+
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class Resultat {
 
 	public static ArrayList<Resultat> resultatListe;
 	private String disciplin;
-	private LocalTime tid;
+	private Duration tid;
 	private int medlemId;
+
+	public Resultat(String disciplin, Duration tid, int medlemId)
+	{
+		this.disciplin = disciplin;
+		this.tid = tid;
+		this.medlemId = medlemId;
+	}
 
 	public static void indlaesResultater() {
 		// TODO - implement Resultat.indlaesResultater
