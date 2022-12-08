@@ -1,16 +1,15 @@
 package src;
 
-import java.time.Duration;
 import java.util.ArrayList;
 
 public class Resultat {
 
 	public static ArrayList<Resultat> resultatListe;
 	private String disciplin;
-	private Duration tid;
+	private int tid;
 	private int medlemId;
 
-	public Resultat(String disciplin, Duration tid, int medlemId)
+	public Resultat(String disciplin, int tid, int medlemId)
 	{
 		this.disciplin = disciplin;
 		this.tid = tid;
