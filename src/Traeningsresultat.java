@@ -10,9 +10,8 @@ public class Traeningsresultat extends Resultat {
 
 	public Traeningsresultat(String disciplin, int tid, int medlemId, LocalDate dato)
 	{
-		(super(disciplin, int tid, int medlemId));
+		super(disciplin, tid, medlemId);
 		this.dato = dato;
-
 	}
 
 }

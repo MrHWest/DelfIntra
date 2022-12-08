@@ -1,5 +1,6 @@
 package src;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
@@ -9,7 +10,7 @@ public class KonkurrenceFunktioner {
 
 	static Scanner scan = new Scanner(System.in);
 
-	public static void indlaesData() {
+	public static void indlaesData() throws FileNotFoundException {
 		Medlem.IndlaesMedlemmer();
 		Resultat.indlaesResultater();
 	}

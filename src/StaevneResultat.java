@@ -9,7 +9,7 @@ public class StaevneResultat extends Resultat {
 
 	public StaevneResultat(String disciplin, int tid, int medlemId, String staevneNavn, int placering)
 	{
-		super(disciplin, tid, medlemId)
+		super(disciplin, tid, medlemId);
 		this.staevneNavn = staevneNavn;
 		this.placering= placering;
 	}
