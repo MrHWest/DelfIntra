@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class FormandFunktioner {
 
@@ -24,10 +25,20 @@ public class FormandFunktioner {
 			String navn = input.nextLine();
 
 			//Indlaes dato og cast til LocalDate
+			boolean correctDateFormat = true;
+			LocalDate foedselsdato = LocalDate.of(1900, 01, 01);
+			do {
 			System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
 			String input_dato = input.nextLine();
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-			LocalDate foedselsdato = LocalDate.parse(input_dato, formatter);
+			try {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				foedselsdato = LocalDate.parse(input_dato, formatter);
+				correctDateFormat = true;
+			} catch(DateTimeParseException e) {
+				System.out.println("Ugyldig dato. Prøv igen");
+				correctDateFormat = false;
+			}
+		} while(!correctDateFormat);
 
 			System.out.println("Har personen et aktivt medlemskab? (Ja/Nej)");
 			boolean aktiv;
