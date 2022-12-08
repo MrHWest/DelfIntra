@@ -1,10 +1,17 @@
 package src;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Traeningsresultat extends Resultat {
 
-	private Date dato;
+	private LocalDate dato;
 	private ArrayList<Traeningsresultat> traeningsresultatListe;
+
+	public Traeningsresultat(String disciplin, int tid, int medlemId, LocalDate dato)
+	{
+		super(disciplin, tid, medlemId);
+		this.dato = dato;
+	}
 
 }

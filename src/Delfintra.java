@@ -1,8 +1,8 @@
 package src;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Delfintra {
 
@@ -53,6 +53,7 @@ public class Delfintra {
                 //Liste af medlemmer i restance
                 case 3:
                 System.out.println("Du har valgt at se en liste over medlemmer i restance");
+                Regnskabsfunktioner.indlaesData();
                 Regnskabsfunktioner.visRestancer();
                 break;
 

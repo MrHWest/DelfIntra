@@ -1,10 +1,13 @@
 package src;
-import java.util.ArrayList;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Medlem {
 
@@ -15,6 +18,8 @@ public class Medlem {
 	private boolean aktiv;
 	private String aktivitetsform;
 	private int kontingentId;
+
+	static Scanner scan = new Scanner(System.in);
 
 	public Medlem(int id, String navn, LocalDate foedselsdato, boolean aktiv) {
 		this.id = id;
@@ -108,5 +113,41 @@ public String toString(){
 
 	public LocalDate getFoedselsdato() {
 		return foedselsdato;
+	}
+
+	//metode til at finde et medlemsid baseret på navn og foedselsdato
+	public static int findId(String navn, LocalDate foedselsdato)
+	{
+		int fundetId = -99;
+		for (Medlem m: MedlemListe)
+		{
+			if (m.getNavn().equals(navn) && m.getFoedselsdato() == foedselsdato) fundetId = m.getId();
+		}
+		return fundetId;
+	}
+
+	//funktion der tager input for at finde et medlems id og spørger igen indtil det virker
+	public static int findMedlem() throws InputMismatchException
+	{
+		boolean idOk = false;
+		int fundetId = -99;
+		do
+		{
+			System.out.println("Indtast navn på medlemmet:");
+			String n = scan.nextLine();
+			System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
+			String input_dato = scan.nextLine();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate f = LocalDate.parse(input_dato, formatter);
+			fundetId = findId(n,f);
+			if (fundetId >= 0) {
+				idOk = true;
+			} else {
+				System.out.println("Kunne ikke finde medlem, tjek din indtastning og prøv igen");
+			}
+
+		} while (!idOk);
+
+		return fundetId;
 	}
 }

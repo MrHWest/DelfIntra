@@ -3,7 +3,6 @@ package src;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Regnskabsfunktioner {
@@ -34,21 +33,19 @@ public class Regnskabsfunktioner {
 	}
 
 	public static void visRestancer() {
-		ArrayList<Medlem> debitorListe = new ArrayList<Medlem>();
 
 		for (Medlem m: Medlem.MedlemListe)
 		{
 			Kontingent kontingent = m.hentKontingent();
-			if (ChronoUnit.YEARS.between(kontingent.getBetalingsDato(), LocalDate.now()) > 1)
+			long aar = ChronoUnit.YEARS.between(kontingent.getBetalingsDato(), LocalDate.now());
+			if ( aar > 1)
 			{
-				debitorListe.add(m);
+				double gaeld = kontingent.getPris()*aar;
+				System.out.println(m.getNavn()+" skylder "+gaeld+" kr.");
 			}
 		}
 
-		for (Medlem m: debitorListe)
-		{
-			System.out.println(m);
-		}
+
 	}
 
 }
