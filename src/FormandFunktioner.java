@@ -25,7 +25,7 @@ public class FormandFunktioner {
 			String navn = input.nextLine();
 
 			//Indlaes dato og cast til LocalDate
-			boolean correctDateFormat = true;
+			boolean validInput = true;
 			LocalDate foedselsdato = LocalDate.of(1900, 01, 01);
 			do {
 			System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
@@ -33,39 +33,55 @@ public class FormandFunktioner {
 			try {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 				foedselsdato = LocalDate.parse(input_dato, formatter);
-				correctDateFormat = true;
+				validInput = true;
 			} catch(DateTimeParseException e) {
 				System.out.println("Ugyldig dato. Prøv igen");
-				correctDateFormat = false;
+				validInput = false;
 			}
-		} while(!correctDateFormat);
+		} while(!validInput);
 
-			System.out.println("Har personen et aktivt medlemskab? (Ja/Nej)");
 			boolean aktiv;
-			String aktivt = input.nextLine();
-			if(aktivt.toLowerCase().equals("ja")){
-				aktiv = true;
-			}
-			else if(aktivt.toLowerCase().equals("nej")){
-				aktiv = false;
-			}
-			else{
-				aktiv = false;
-				System.out.println("!Ugyldigt svar!");
-			}
+			String aktivt = "";
+			do {
+				System.out.println("Har personen et aktivt medlemskab? (Ja/Nej)");
+				aktivt = input.nextLine();
+				if(aktivt.toLowerCase().equals("ja")){
+					aktiv = true;
+					validInput = true;
+				}
+				else if(aktivt.toLowerCase().equals("nej")){
+					aktiv = false;
+					validInput = true;
+				}
+				else{
+					aktiv = false;
+					System.out.println("!Ugyldigt svar!");
+					validInput = false;
+				}
+		} while (!validInput);
 
 			//konkurence svømmer
-			System.out.println("Er det en konkurence svoemmer? (Ja/Nej)");
 			String aktivitetsform = "";
+			do {
+			System.out.println("Er det en konkurence svoemmer? (Ja/Nej)");
+			aktivitetsform = "";
 			String ja_nej = input.nextLine();
 			if(ja_nej.toLowerCase().equals("ja")){
+				validInput = true;
 				System.out.println("Indtast diciplin");
 				aktivitetsform = input.nextLine();
 			} else if(ja_nej.toLowerCase().equals("nej")){
 				aktivitetsform = "ikke deltagene";
+				validInput = true;
 			}
+			else {
+				System.out.println("Ugyldigt input!");
+				validInput = false;
+			}
+		} while(!validInput);
 			
 
+		 do {
 			System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
 			System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
 			System.out.println("____________________________________________________________________________");
@@ -82,9 +98,16 @@ public class FormandFunktioner {
 
 				System.out.println("-----Oplyningerne er gemt-----");
 				nytMedlem = true;
+				validInput = true;
 			}else if(korrekt.toLowerCase().equals("nej")){
 				System.out.println("Indtast oplysnigerne igen");
-			}
+				validInput = true;
+		 }
+		 else {
+			System.out.println("Ugyldigt input!");
+			validInput = false;
+		 }
+		} while (!validInput);
 		} while (nytMedlem == false);
 
 	}
