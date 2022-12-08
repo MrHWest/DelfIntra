@@ -60,7 +60,7 @@ public class Delfintra {
                 //Konkurrence svoemmere's resultater
                 case 4:
                 System.out.println("Du har valgt at Registrer konkurrencessvoemmere's resultater (Stævne/placering/tid)");
-
+                KonkurrenceFunktioner.registrerTraening();
                 break;
 
                 //Registrer træningsresultater
