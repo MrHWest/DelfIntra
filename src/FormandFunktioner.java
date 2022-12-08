@@ -69,7 +69,6 @@ public class FormandFunktioner {
 				System.out.println("Indtast oplysnigerne igen");
 			}
 		} while (nytMedlem == false);
-		input.close();
 
 	}
 
