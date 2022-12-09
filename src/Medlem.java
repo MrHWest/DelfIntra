@@ -172,4 +172,9 @@ public static void printMedlemListe() throws FileNotFoundException {
 
 		return fundetId;
 	}
+
+	public String getAktivitetsform()
+	{
+		return aktivitetsform;
+	}
 }

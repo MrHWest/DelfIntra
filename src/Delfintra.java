@@ -47,7 +47,7 @@ public class Delfintra {
         System.out.println("1 - Registrer medlem");
         System.out.println("2 - Registrer Indbetalling");
         System.out.println("3 - Se liste over medlemmer i restance");
-        System.out.println("4 - Registrer konkurrencessvoemmere's resultater (Stævne/placering/tid)");
+        System.out.println("4 - Registrer konkurrencessvoemmere's resultater (Staevne/placering/tid)");
         System.out.println("5 - Registrer traeningsresultater");
         System.out.println("6 - Se top 5 svoemmere for hver disciplin");
         System.out.println("7 - Print medlem liste");
@@ -62,13 +62,14 @@ public class Delfintra {
             switch(tastTal){
                 //Registrer medlem
                 case 1:
-                System.out.println("Du har valgt at registrer et medlem");
+                System.out.println("Du har valgt at registrere et medlem");
+                FormandFunktioner.indlaesData();
                 FormandFunktioner.registrerMedlem();
                 break;
 
                 //Registrer indbetalling
                 case 2:
-                System.out.println("Du har valgt at Registrer Indbetallinger");
+                System.out.println("Du har valgt at Registrere en indbetaling");
                 Regnskabsfunktioner.indlaesData();
                 Regnskabsfunktioner.registrerIndbetaling();
                 break;
@@ -82,15 +83,22 @@ public class Delfintra {
 
                 //Konkurrence svoemmere's resultater
                 case 4:
-                System.out.println("Du har valgt at Registrer konkurrencessvoemmere's resultater (Stævne/placering/tid)");
+
+                System.out.println("Du har valgt at registrere et konkurrenceresultat");
                 System.out.println();
+                KonkurrenceFunktioner.indlaesData();
                 KonkurrenceFunktioner.registrerKonkurrenceResultat();
+
                 break;
+
 
                 //Registrer træningsresultater
                 case 5:
-                System.out.println("Du har valgt at Registrer træningsresultater");
+
+                System.out.println("Du har valgt at registrere et træningsresultat");
                 System.out.println();
+                KonkurrenceFunktioner.indlaesData();
+
                 KonkurrenceFunktioner.registrerTraening();
 
                 break;
@@ -98,6 +106,8 @@ public class Delfintra {
                 //Se top 5 liste 
                 case 6:
                 System.out.println("Du har valgt at se en top 5 liste");
+                KonkurrenceFunktioner.indlaesData();
+                KonkurrenceFunktioner.visTop5();
 
                 break;
 

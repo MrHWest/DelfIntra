@@ -23,3 +23,6 @@
 hs_err_pid*
 replay_pid*
 .vscode/settings.json
+
+# User information saved as text files. Ignore these.
+*.txt
