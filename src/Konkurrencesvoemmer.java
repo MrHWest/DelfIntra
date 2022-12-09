@@ -12,4 +12,19 @@ public class Konkurrencesvoemmer extends Medlem {
 		super(id, navn, foedselsdato, aktiv);
 		ArrayList<String> aktiveDiscipliner = new ArrayList<String>();
 	}
+
+	public void ekstraDisciplin(String nyDis)
+	{
+		boolean duplikat = false;
+		for (String s: aktiveDiscipliner)
+		{
+			if (nyDis.equalsIgnoreCase(s)) duplikat = true;
+		}
+
+		if (!duplikat)
+		{
+			this.aktiveDiscipliner.add(nyDis);
+		}
+	}
+
 }

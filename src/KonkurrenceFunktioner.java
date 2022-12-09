@@ -37,6 +37,8 @@ public class KonkurrenceFunktioner {
 
 		Traeningsresultat nytResultat = new Traeningsresultat(disciplin, tid, id, resDato);
 		Resultat.resultatListe.add(nytResultat);
+
+		if (Medlem.MedlemListe.get(id) instanceof Konkurrencesvoemmer) ((Konkurrencesvoemmer) Medlem.MedlemListe.get(id)).ekstraDisciplin(disciplin);
 	}
 
 	public static void registrerKonkurrenceResultat() throws InputMismatchException {
@@ -53,6 +55,8 @@ public class KonkurrenceFunktioner {
 
 		StaevneResultat nytResultat = new StaevneResultat(disciplin, tid, id, staevnenavn, placering);
 		Resultat.resultatListe.add(nytResultat);
+
+		if (Medlem.MedlemListe.get(id) instanceof Konkurrencesvoemmer) ((Konkurrencesvoemmer) Medlem.MedlemListe.get(id)).ekstraDisciplin(disciplin);
 
 
 	}
@@ -142,5 +146,6 @@ public class KonkurrenceFunktioner {
 			}
 		}
 	}
+
 
 }

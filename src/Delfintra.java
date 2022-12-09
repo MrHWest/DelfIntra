@@ -1,7 +1,5 @@
 package src;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Delfintra {
@@ -80,6 +78,7 @@ public class Delfintra {
                 case 6:
                 System.out.println("Du har valgt at se en top 5 liste");
                 KonkurrenceFunktioner.indlaesData();
+                KonkurrenceFunktioner.visTop5();
 
                 break;
 
