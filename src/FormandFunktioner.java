@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class FormandFunktioner {
 
 	public static void indlaesData() {
-		// TODO - implement FormandFunktioner.indlaesData
+		
 		throw new UnsupportedOperationException();
 	}
 
@@ -47,32 +47,56 @@ public class FormandFunktioner {
 			System.out.println("Er det en konkurence svoemmer? (Ja/Nej)");
 			String aktivitetsform = "";
 			String ja_nej = input.nextLine();
+
 			if(ja_nej.toLowerCase().equals("ja")){
 				System.out.println("Indtast diciplin");
 				aktivitetsform = input.nextLine();
-			} else if(ja_nej.toLowerCase().equals("nej")){
-				aktivitetsform = "ikke deltagene";
-			}
+
+				System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
+				System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
+				System.out.println("____________________________________________________________________________");
+				String korrekt = input.nextLine();
+
+					if(korrekt.toLowerCase().equals("ja")){
+						Konkurrencesvoemmer Konkurrencesvoemmer = new Konkurrencesvoemmer(Konkurrencesvoemmer.konkurrencesvoemmerListe.size()+1, navn, foedselsdato, aktiv, aktivitetsform);
+						Medlem.MedlemListe.add(Konkurrencesvoemmer);
+						Kontingent nytKontingent = new Kontingent(Konkurrencesvoemmer);
+						Kontingent.kontingentListe.add(nytKontingent);
+
+						// Gem oplysninger til fil
+						Medlem.gemMedlemsdata();
+						Kontingent.gemKontingentData();
+
+						System.out.println("-----Oplyningerne er gemt-----");
+						nytMedlem = true;
+
+						}else if(korrekt.toLowerCase().equals("nej")){
+							System.out.println("Indtast oplysnigerne igen");
+						} else if(ja_nej.toLowerCase().equals("nej")){
+
+							aktivitetsform = "ikke deltagene";
+
+							System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
+						System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
+						System.out.println("____________________________________________________________________________");
+						String correkt = input.nextLine();
+						if(correkt.toLowerCase().equals("ja")){
+							Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
+							Medlem.MedlemListe.add(nyMedlem);
+							Kontingent nytKontingent = new Kontingent(nyMedlem);
+							Kontingent.kontingentListe.add(nytKontingent);
+
+							// Gem oplysninger til fil
+							Medlem.gemMedlemsdata();
+							Kontingent.gemKontingentData();
+
+							System.out.println("-----Oplyningerne er gemt-----");
+							nytMedlem = true;
+						}else if(correkt.toLowerCase().equals("nej")){
+							System.out.println("Indtast oplysnigerne igen");
+					}
+				}
 			
-
-			System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
-			System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
-			System.out.println("____________________________________________________________________________");
-			String korrekt = input.nextLine();
-			if(korrekt.toLowerCase().equals("ja")){
-				Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
-				Medlem.MedlemListe.add(nyMedlem);
-				Kontingent nytKontingent = new Kontingent(nyMedlem);
-				Kontingent.kontingentListe.add(nytKontingent);
-
-				// Gem oplysninger til fil
-				Medlem.gemMedlemsdata();
-				Kontingent.gemKontingentData();
-
-				System.out.println("-----Oplyningerne er gemt-----");
-				nytMedlem = true;
-			}else if(korrekt.toLowerCase().equals("nej")){
-				System.out.println("Indtast oplysnigerne igen");
 			}
 		} while (nytMedlem == false);
 
