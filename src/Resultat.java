@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public class Resultat {
+public class Resultat implements Comparable<Resultat>{
 
 	public static ArrayList<Resultat> resultatListe;
 	private String disciplin;
@@ -26,4 +26,23 @@ public class Resultat {
 		throw new UnsupportedOperationException();
 	}
 
+
+	@Override
+	public int compareTo(Resultat r) {
+		if (tid == r.tid) {
+			return 0;
+		} else if (tid < r.tid) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	public String getDisciplin() {
+		return disciplin;
+	}
+
+	public int getMedlemId() {
+		return medlemId;
+	}
 }
