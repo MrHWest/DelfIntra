@@ -150,4 +150,9 @@ public String toString(){
 
 		return fundetId;
 	}
+
+	public String getAktivitetsform()
+	{
+		return aktivitetsform;
+	}
 }
