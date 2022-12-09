@@ -72,6 +72,7 @@ public class Delfintra {
                 System.out.println("Du har valgt at Registrere en indbetaling");
                 Regnskabsfunktioner.indlaesData();
                 Regnskabsfunktioner.registrerIndbetaling();
+                Regnskabsfunktioner.gemData();
                 break;
 
                 //Liste af medlemmer i restance
@@ -79,6 +80,7 @@ public class Delfintra {
                 System.out.println("Du har valgt at se en liste over medlemmer i restance");
                 Regnskabsfunktioner.indlaesData();
                 Regnskabsfunktioner.visRestancer();
+
                 break;
 
                 //Konkurrence svoemmere's resultater
@@ -88,6 +90,7 @@ public class Delfintra {
                 System.out.println();
                 KonkurrenceFunktioner.indlaesData();
                 KonkurrenceFunktioner.registrerKonkurrenceResultat();
+                KonkurrenceFunktioner.gemData();
 
                 break;
 
@@ -100,6 +103,7 @@ public class Delfintra {
                 KonkurrenceFunktioner.indlaesData();
 
                 KonkurrenceFunktioner.registrerTraening();
+                KonkurrenceFunktioner.gemData();
 
                 break;
 
@@ -108,6 +112,7 @@ public class Delfintra {
                 System.out.println("Du har valgt at se en top 5 liste");
                 KonkurrenceFunktioner.indlaesData();
                 KonkurrenceFunktioner.visTop5();
+
 
                 break;
 

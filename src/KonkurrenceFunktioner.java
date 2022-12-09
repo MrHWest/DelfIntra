@@ -215,5 +215,9 @@ public class KonkurrenceFunktioner {
 		}
 	}
 
+	public static void gemData() throws IOException {
+		Medlem.gemMedlemsdata();
+		Resultat.gemResultater();
+	}
 
 }

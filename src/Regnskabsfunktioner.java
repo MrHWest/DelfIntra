@@ -1,6 +1,7 @@
 package src;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
@@ -57,6 +58,11 @@ public class Regnskabsfunktioner {
 		}
 
 
+	}
+
+	public static void gemData() throws IOException {
+		Medlem.gemMedlemsdata();
+		Kontingent.gemKontingentData();
 	}
 
 }
