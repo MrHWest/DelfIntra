@@ -20,16 +20,27 @@ public class Regnskabsfunktioner {
 	}
 
 	//Finder et medlem, finder dette medlems kontingent og opdaterer seneste betalingsdato til dags dato
-	public static void registrerIndbetaling() {
-		System.out.println("Indtast navn på det medlem du vil registrere en indbetaling for:");
-		String navn = scan.nextLine();
-		for (Medlem m: Medlem.MedlemListe)
-		{
-			if (navn.equals(m.getNavn()))
+	public static void registrerIndbetaling() throws FileNotFoundException {
+		System.out.print("\nMedlemsliste:\n\n");
+		Medlem.printMedlemListe();
+		boolean betalingRegistreret = false;
+		do {
+			System.out.println("Indtast navn på det medlem du vil registrere en indbetaling for:");
+			String navn = scan.nextLine();
+			for (Medlem m: Medlem.MedlemListe)
 			{
-				m.hentKontingent().setBetalingsdato(LocalDate.now());
+				if (navn.equals(m.getNavn()))
+				{
+					m.hentKontingent().setBetalingsdato(LocalDate.now());
+					System.out.print("\nBetaling registreret.\n");
+					betalingRegistreret = true;
+					break;
+				}
+
+				// Hvis vi når hertil, er intet medlem blevet fundet.
+				System.out.println("Medlem blev ikke fundet. Prøv igen.");
 			}
-		}
+	} while(!betalingRegistreret);
 	}
 
 	public static void visRestancer() {
@@ -38,7 +49,7 @@ public class Regnskabsfunktioner {
 		{
 			Kontingent kontingent = m.hentKontingent();
 			long aar = ChronoUnit.YEARS.between(kontingent.getBetalingsDato(), LocalDate.now());
-			if ( aar > 1)
+			if ( aar >= 1)
 			{
 				double gaeld = kontingent.getPris()*aar;
 				System.out.println(m.getNavn()+" skylder "+gaeld+" kr.");

@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class FormandFunktioner {
 
@@ -24,12 +25,21 @@ public class FormandFunktioner {
 			String navn = input.nextLine();
 
 			//Indlaes dato og cast til LocalDate
+			boolean validInput = true;
+			LocalDate foedselsdato = LocalDate.of(1900, 01, 01);
+			do {
 			System.out.println("Indtast foedselsdato (dd-mm-yyyy)");
 			String input_dato = input.nextLine();
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-			LocalDate foedselsdato = LocalDate.parse(input_dato, formatter);
+			try {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				foedselsdato = LocalDate.parse(input_dato, formatter);
+				validInput = true;
+			} catch(DateTimeParseException e) {
+				System.out.println("Ugyldig dato. Prøv igen");
+				validInput = false;
+			}
+		} while(!validInput);
 
-			System.out.println("Har personen et aktivt medlemskab? (Ja/Nej)");
 			boolean aktiv;
 			String aktivt = input.nextLine();
 			if(aktivt.equalsIgnoreCase("ja")){
@@ -49,7 +59,36 @@ public class FormandFunktioner {
 			String type = "";
 			if (j_n.equalsIgnoreCase("j")) {type = "Konkurrencesvoemmer";}
 			if (j_n.equalsIgnoreCase("n")) {type = "Motionist";}
+			
 
+		 do {
+			System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
+			System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
+			System.out.println("____________________________________________________________________________");
+			String korrekt = input.nextLine();
+			if(korrekt.toLowerCase().equals("ja")){
+				Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
+				Medlem.MedlemListe.add(nyMedlem);
+				Kontingent nytKontingent = new Kontingent(nyMedlem);
+				Kontingent.kontingentListe.add(nytKontingent);
+
+				// Gem oplysninger til fil
+				Medlem.gemMedlemsdata();
+				Kontingent.gemKontingentData();
+
+				System.out.println("-----Oplyningerne er gemt-----");
+				nytMedlem = true;
+				validInput = true;
+			}else if(korrekt.toLowerCase().equals("nej")){
+				System.out.println("Indtast oplysnigerne igen");
+				validInput = true;
+		 }
+		 else {
+			System.out.println("Ugyldigt input!");
+			validInput = false;
+		 }
+		} while (!validInput);
+		} while (nytMedlem == false);
 
 
 				System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
