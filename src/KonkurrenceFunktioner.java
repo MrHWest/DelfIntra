@@ -76,20 +76,52 @@ public class KonkurrenceFunktioner {
 		System.out.print("\n\nResultatet er gemt.\n\n");
 	}
 
-	public static void registrerKonkurrenceResultat() throws InputMismatchException {
-		System.out.println("Hvilket medlem vil du registrere en tid for?");
-		int id = Medlem.findMedlem();
-		System.out.println("Hvilken disciplin?");
-		String disciplin = scan.nextLine();
-		System.out.println("Hvor mange hele sekunder?");
-		int tid = scan.nextInt();
-		System.out.println("Navn på staevnet?");
-		String staevnenavn = scan.nextLine();
-		System.out.println("Hvilken plads fik svoemmeren?");
-		int placering = scan.nextInt();
+	public static void registrerKonkurrenceResultat() throws InputMismatchException, IOException {
+		System.out.print("\nMedlemsliste:\n\n");
+		Medlem.printMedlemListe();
+		
+		int id = -1;
+		boolean validInput = true;
+		do {
+			try {
+				validInput = true;
+				System.out.println("Hvilket medlem vil du registrere en tid for? Indtast vedkommendes ID:");
+				id = scan.nextInt();
+			} catch(InputMismatchException e) {
+				System.out.println("Inputtet skal være et heltal!");
+				scan.next();
+				validInput = false;
+			}
+		} while(!validInput);
 
-		StaevneResultat nytResultat = new StaevneResultat(disciplin, tid, id, staevnenavn, placering);
+		System.out.println("Hvilken disciplin?");
+		String disciplin = scan.next();
+		int tid = -1;
+		do {
+			System.out.println("Hvor mange hele sekunder?");
+			try {
+				validInput = true;
+				tid = scan.nextInt();
+			} catch(InputMismatchException e) {
+				System.out.println("Inputtet skal være et heltal!");
+				scan.next();
+				validInput = false;
+			}
+		} while(!validInput);
+
+		// Følgende kommenteret ud indtil implementeringen af StaevneResultat er færdig
+		//
+		// System.out.println("Navn på staevnet?");
+		// String staevnenavn = scan.nextLine();
+		// System.out.println("Hvilken plads fik svoemmeren?");
+		// int placering = scan.nextInt();
+
+		//StaevneResultat nytResultat = new StaevneResultat(disciplin, tid, id, staevnenavn, placering);
+
+		Resultat nytResultat = new Resultat(disciplin, tid, id);
 		Resultat.resultatListe.add(nytResultat);
+		Resultat.gemResultater();
+		System.out.print("\n\nResultatet er gemt.\n\n");
 
 
 	}
