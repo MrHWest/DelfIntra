@@ -103,7 +103,7 @@ public String toString(){
 	}
 
 public static void printMedlemListe() throws FileNotFoundException {
-	IndlaesMedlemmer();
+	if(MedlemListe.size() == 0) IndlaesMedlemmer();
 	for(Medlem m : MedlemListe) {
 		System.out.println(m.toString());
 	}
