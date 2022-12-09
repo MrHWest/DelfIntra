@@ -32,10 +32,10 @@ public class FormandFunktioner {
 			System.out.println("Har personen et aktivt medlemskab? (Ja/Nej)");
 			boolean aktiv;
 			String aktivt = input.nextLine();
-			if(aktivt.toLowerCase().equals("ja")){
+			if(aktivt.equalsIgnoreCase("ja")){
 				aktiv = true;
 			}
-			else if(aktivt.toLowerCase().equals("nej")){
+			else if(aktivt.equalsIgnoreCase("nej")){
 				aktiv = false;
 			}
 			else{
@@ -43,24 +43,24 @@ public class FormandFunktioner {
 				System.out.println("!Ugyldigt svar!");
 			}
 
-			//konkurence svømmer
-			System.out.println("Er det en konkurence svoemmer? (Ja/Nej)");
-			String aktivitetsform = "";
-			String ja_nej = input.nextLine();
+			//konkurrencesvømmer
+			System.out.println("Er det en konkurrencesvoemmer? (J/N)");
+			String j_n = input.nextLine();
+			String type = "";
+			if (j_n.equalsIgnoreCase("j")) {type = "Konkurrencesvoemmer";}
+			if (j_n.equalsIgnoreCase("n")) {type = "Motionist";}
 
-			if(ja_nej.toLowerCase().equals("ja")){
-				System.out.println("Indtast diciplin");
-				aktivitetsform = input.nextLine();
+
 
 				System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
-				System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
+				System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Type: "+type );
 				System.out.println("____________________________________________________________________________");
 				String korrekt = input.nextLine();
 
-					if(korrekt.toLowerCase().equals("ja")){
-						Konkurrencesvoemmer Konkurrencesvoemmer = new Konkurrencesvoemmer(Konkurrencesvoemmer.konkurrencesvoemmerListe.size()+1, navn, foedselsdato, aktiv, aktivitetsform);
-						Medlem.MedlemListe.add(Konkurrencesvoemmer);
-						Kontingent nytKontingent = new Kontingent(Konkurrencesvoemmer);
+					if(korrekt.equalsIgnoreCase("ja")){
+						Konkurrencesvoemmer nyKonkurrencesvoemmer = new Konkurrencesvoemmer(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
+						Medlem.MedlemListe.add(nyKonkurrencesvoemmer);
+						Kontingent nytKontingent = new Kontingent(nyKonkurrencesvoemmer);
 						Kontingent.kontingentListe.add(nytKontingent);
 
 						// Gem oplysninger til fil
@@ -70,17 +70,17 @@ public class FormandFunktioner {
 						System.out.println("-----Oplyningerne er gemt-----");
 						nytMedlem = true;
 
-						}else if(korrekt.toLowerCase().equals("nej")){
+						}else if(korrekt.equalsIgnoreCase("nej")){
 							System.out.println("Indtast oplysnigerne igen");
-						} else if(ja_nej.toLowerCase().equals("nej")){
+						} else if(j_n.equalsIgnoreCase("nej")){
 
-							aktivitetsform = "ikke deltagene";
+							type = "Motionist";
 
 							System.out.println("Er disse oplysninger korrekte? (Ja/Nej)");
-						System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Diciplin: " + aktivitetsform );
+						System.out.println("Navn: " + navn + " | Fødselsdag: " + foedselsdato +  " | Aktiv: " + aktivt + " | Type: " +type );
 						System.out.println("____________________________________________________________________________");
 						String correkt = input.nextLine();
-						if(correkt.toLowerCase().equals("ja")){
+						if(correkt.equalsIgnoreCase("ja")){
 							Medlem nyMedlem = new Medlem(Medlem.MedlemListe.size()+1, navn, foedselsdato, aktiv);
 							Medlem.MedlemListe.add(nyMedlem);
 							Kontingent nytKontingent = new Kontingent(nyMedlem);
@@ -92,13 +92,12 @@ public class FormandFunktioner {
 
 							System.out.println("-----Oplyningerne er gemt-----");
 							nytMedlem = true;
-						}else if(correkt.toLowerCase().equals("nej")){
+						}else if(correkt.equalsIgnoreCase("nej")){
 							System.out.println("Indtast oplysnigerne igen");
 					}
 				}
 			
-			}
-		} while (nytMedlem == false);
+			} while (!nytMedlem);
+		}
 	}
 
-}
