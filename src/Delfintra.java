@@ -1,11 +1,32 @@
 package src;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Delfintra {
 
 	public static void main(String[] args) throws Exception {
-		visValgmuligheder();
+        try {
+            visValgmuligheder();
+        } catch(Exception e) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
+            String currentTime = LocalDateTime.now().format(dtf);
+            String fileName = "fejl_log_"+ currentTime + ".txt";
+            System.out.print("\n\nDer opstod en fejl.\nSe '"+ fileName + "' for mere info.\n\nProgrammet lukker nu.");
+
+            // Print error to log
+            File f = new File(fileName);
+            FileOutputStream fs = new FileOutputStream(f);
+            PrintStream ps = new PrintStream(fs);
+            e.printStackTrace(ps);
+            fs.close();
+            ps.close();
+
+        }
 	}
 
 	public static void visValgmuligheder() throws Exception {
