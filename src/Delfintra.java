@@ -38,14 +38,14 @@ public class Delfintra {
             switch(tastTal){
                 //Registrer medlem
                 case 1:
-                System.out.println("Du har valgt at registrer et medlem");
+                System.out.println("Du har valgt at registrere et medlem");
                 FormandFunktioner.indlaesData();
                 FormandFunktioner.registrerMedlem();
                 break;
 
                 //Registrer indbetalling
                 case 2:
-                System.out.println("Du har valgt at Registrer Indbetallinger");
+                System.out.println("Du har valgt at Registrere en indbetaling");
                 Regnskabsfunktioner.indlaesData();
                 Regnskabsfunktioner.registrerIndbetaling();
                 break;
@@ -59,7 +59,7 @@ public class Delfintra {
 
                 //Konkurrence svoemmere's resultater
                 case 4:
-                System.out.println("Du har valgt at Registrer konkurrencessvoemmere's resultater (Stævne/placering/tid)");
+                System.out.println("Du har valgt at registrere et konkurrenceresultat");
                 KonkurrenceFunktioner.indlaesData();
                 KonkurrenceFunktioner.registrerKonkurrenceResultat();
 
@@ -68,7 +68,7 @@ public class Delfintra {
 
                 //Registrer træningsresultater
                 case 5:
-                System.out.println("Du har valgt at Registrer træningsresultater");
+                System.out.println("Du har valgt at registrere et træningsresultat");
                 KonkurrenceFunktioner.indlaesData();
                 KonkurrenceFunktioner.registrerTraening();
 
