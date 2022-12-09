@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class FormandFunktioner {
 
 	public static void indlaesData() {
-		// TODO - implement FormandFunktioner.indlaesData
+		
 		throw new UnsupportedOperationException();
 	}
 
@@ -47,6 +47,7 @@ public class FormandFunktioner {
 			System.out.println("Er det en konkurence svoemmer? (Ja/Nej)");
 			String aktivitetsform = "";
 			String ja_nej = input.nextLine();
+
 			if(ja_nej.toLowerCase().equals("ja")){
 				System.out.println("Indtast diciplin");
 				aktivitetsform = input.nextLine();
