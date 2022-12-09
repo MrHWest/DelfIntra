@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Delfintra {
@@ -32,7 +33,7 @@ public class Delfintra {
 	public static void visValgmuligheder() throws Exception {
         Scanner input = new Scanner(System.in);
 
-        int tastTal;
+        int tastTal = -1;
         /*ArrayList<Integer> valid_answers = new ArrayList<>();
         
         for (int i=1; i<=6; i++) {
@@ -40,6 +41,8 @@ public class Delfintra {
         }*/
         do {
 
+        try {
+        System.out.println();
         System.out.println("-----Hvad vil du?-----");
         System.out.println("1 - Registrer medlem");
         System.out.println("2 - Registrer Indbetalling");
@@ -80,7 +83,9 @@ public class Delfintra {
 
                 //Konkurrence svoemmere's resultater
                 case 4:
+
                 System.out.println("Du har valgt at registrere et konkurrenceresultat");
+                System.out.println();
                 KonkurrenceFunktioner.indlaesData();
                 KonkurrenceFunktioner.registrerKonkurrenceResultat();
 
@@ -89,8 +94,11 @@ public class Delfintra {
 
                 //Registrer træningsresultater
                 case 5:
+
                 System.out.println("Du har valgt at registrere et træningsresultat");
+                System.out.println();
                 KonkurrenceFunktioner.indlaesData();
+
                 KonkurrenceFunktioner.registrerTraening();
 
                 break;
@@ -108,7 +116,10 @@ public class Delfintra {
                 Medlem.printMedlemListe();
                 break;
             } //Slut paa switch
-
+        } catch(InputMismatchException e) {
+            System.out.println("Du har indtastet forkert slags input. Prøv igen.");
+            input.next();
+        }
         } while (tastTal != 0);
         System.out.println("Programmet lukker nu");
 	}
