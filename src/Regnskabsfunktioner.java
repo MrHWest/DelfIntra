@@ -20,7 +20,9 @@ public class Regnskabsfunktioner {
 	}
 
 	//Finder et medlem, finder dette medlems kontingent og opdaterer seneste betalingsdato til dags dato
-	public static void registrerIndbetaling() {
+	public static void registrerIndbetaling() throws FileNotFoundException {
+		System.out.print("\nMedlemsliste:\n\n");
+		Medlem.printMedlemListe();
 		boolean betalingRegistreret = false;
 		do {
 			System.out.println("Indtast navn på det medlem du vil registrere en indbetaling for:");
