@@ -45,9 +45,9 @@ public class Delfintra {
         System.out.println();
         System.out.println("-----Hvad vil du?-----");
         System.out.println("1 - Registrer medlem");
-        System.out.println("2 - Registrer Indbetalling");
+        System.out.println("2 - Registrer indbetaling");
         System.out.println("3 - Se liste over medlemmer i restance");
-        System.out.println("4 - Registrer konkurrencessvoemmere's resultater (Staevne/placering/tid)");
+        System.out.println("4 - Registrer konkurrencesvoemmere's resultater (Staevne/placering/tid)");
         System.out.println("5 - Registrer traeningsresultater");
         System.out.println("6 - Se top 5 svoemmere for hver disciplin");
         System.out.println("7 - Print medlem liste");
@@ -67,7 +67,7 @@ public class Delfintra {
                 FormandFunktioner.registrerMedlem();
                 break;
 
-                //Registrer indbetalling
+                //Registrer indbetaling
                 case 2:
                 System.out.println("Du har valgt at Registrere en indbetaling");
                 Regnskabsfunktioner.indlaesData();
